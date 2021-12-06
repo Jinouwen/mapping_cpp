@@ -1,0 +1,447 @@
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+mapping start, algorithm: hilbert curve
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+hilbert:2.28558e+10
+random:3.65777e+11
+zigzag:1.83427e+11
+circle5.25682e+11
+
+
+core num:4096
+layer num: 64, node per layer: 64
+mapping start, algorithm: hilbert curve
+mapping done
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:9218810
+mapping start, algorithm: force directed
+mapping_done count:53299964
+hilbert:1.34886e+06
+random:5.41584e+06
+zigzag:2.83634e+06
+circle:7.76303e+06
+FD:3.66415e+06
+hilbert + FD:1.23143e+06
+
+*********************************************************************
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-debug/mapping
+core num:16
+layer num: 4, node per layer: 4
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:152
+duration: 0.000000
+mapping start, algorithm: force directed
+mapping_done count:224
+duration: 0.000000
+hilbert:42.8364
+random:48.7818
+zigzag:37.7875
+circle:58.7132
+FD:31.8026
+hilbert + FD:36.0565
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-debug/mapping
+core num:64
+layer num: 16, node per layer: 4
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:1458
+duration: 0.000000
+mapping start, algorithm: force directed
+mapping_done count:3558
+duration: 0.000000
+hilbert:277.432
+random:576.387
+zigzag:333.37
+circle:430.214
+FD:342.737
+hilbert + FD:231.702
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-debug/mapping
+core num:256
+layer num: 64, node per layer: 4
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:6226
+duration: 0.000000
+mapping start, algorithm: force directed
+mapping_done count:48084
+duration: 0.003000
+hilbert:1261.27
+random:5308.26
+zigzag:1775.62
+circle:1992.33
+FD:2061.92
+hilbert + FD:1076.36
+
+Process finished with exit code 0
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-debug/mapping
+core num:1024
+layer num: 256, node per layer: 4
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:24794
+duration: 0.001000
+mapping start, algorithm: force directed
+mapping_done count:396292
+duration: 0.032000
+hilbert:5124.9
+random:43800.3
+zigzag:7704.86
+circle:8169
+FD:14814.7
+hilbert + FD:4459.19
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:4096
+layer num: 1024, node per layer: 4
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:98514
+duration: 0.003000
+mapping start, algorithm: force directed
+mapping_done count:3226596
+duration: 0.116000
+hilbert:20597.4
+random:349101
+zigzag:31956.8
+circle:32874.2
+FD:107281
+hilbert + FD:18010.3
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:16384
+layer num: 4096, node per layer: 4
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:394288
+duration: 0.021000
+mapping start, algorithm: force directed
+mapping_done count:26838136
+duration: 1.340000
+hilbert:81948.5
+random:2.80225e+06
+zigzag:129206
+circle:131029
+FD:825796
+hilbert + FD:71581
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:65536
+layer num: 16384, node per layer: 4
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:1582678
+duration: 0.097000
+mapping start, algorithm: force directed
+mapping_done count:218209508
+duration: 14.629000
+hilbert:327509
+random:2.24036e+07
+zigzag:520863
+circle:524476
+FD:6.17954e+06
+hilbert + FD:286133
+
+Process finished with exit code 0
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:262144
+layer num: 65536, node per layer: 4
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.002000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:6345890
+duration: 0.496000
+mapping start, algorithm: force directed
+mapping_done count:1752235412
+duration: 168.317000
+hilbert:1.31055e+06
+random:1.78911e+08
+zigzag:2.08985e+06
+circle:2.09703e+06
+FD:4.80996e+07
+hilbert + FD:1.14372e+06
+
+Process finished with exit code 0
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:1048576
+layer num: 262144, node per layer: 4
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.011000
+mapping start, algorithm: force directed
+11mapping_done count:25402760
+duration: 2.296000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+hilbert:5.24268e+06
+random:1.43125e+09
+zigzag:8.37511e+06
+circle:8.3895e+06
+hilbert + FD:4.57524e+06
+
+Process finished with exit code 0
+
+
+**********************************************************************
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:65536
+layer num: 256, node per layer: 256
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+11mapping_done count:1280675756
+duration: 14.291000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+11mapping_done count:2091207146
+duration: 318.720000
+hilbert:1.77388e+08
+random:1.42047e+09
+zigzag:7.18544e+08
+circle:2.03981e+09
+FD:4.25398e+08
+hilbert + FD:1.66867e+08
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:1024
+layer num: 32, node per layer: 32
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+11mapping_done count:836012
+duration: 0.011000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+11mapping_done count:3490896
+duration: 0.059000
+hilbert:113847
+random:328175
+zigzag:179048
+circle:467345
+FD:143038
+hilbert + FD:99744.7
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:4096
+layer num: 64, node per layer: 64
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+11mapping_done count:9218810
+duration: 0.124000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+11mapping_done count:63325686
+duration: 1.009000
+hilbert:1.34886e+06
+random:5.40446e+06
+zigzag:2.83634e+06
+circle:7.76303e+06
+FD:2.15999e+06
+hilbert + FD:1.23143e+06
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:16384
+layer num: 128, node per layer: 128
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+11mapping_done count:113984590
+duration: 1.438000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+11mapping_done count:1068381612
+duration: 15.703000
+hilbert:1.52928e+07
+random:8.81052e+07
+zigzag:4.50847e+07
+circle:1.26384e+08
+FD:3.35332e+07
+hilbert + FD:1.4063e+07
+
+Process finished with exit code 0
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:65536
+layer num: 256, node per layer: 256
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+mapping_done count:1280675756
+duration: 14.807000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:2091207146
+duration: 327.573000
+hilbert:1.77388e+08
+random:1.42047e+09
+zigzag:7.18544e+08
+circle:2.03981e+09
+FD:4.25398e+08
+hilbert + FD:1.66867e+08
+
+Process finished with exit code 0
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:262144
+layer num: 512, node per layer: 512
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.003000
+mapping start, algorithm: force directed
+mapping_done count:-389640758
+duration: 234.517000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+hilbert:1.9837e+09
+random:2.28141e+10
+zigzag:1.14743e+10
+circle:3.27792e+10
+hilbert + FD:1.86491e+09
+
+Process finished with exit code 0
+
+
