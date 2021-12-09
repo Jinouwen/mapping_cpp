@@ -8,7 +8,8 @@
 
 class Evaluator {
 public:
-    static double evaluate(const Placement&);
+    static double weighted_length_total(const Placement &placement);
+    static double longest_path(const Placement &placement);
 };
 
 

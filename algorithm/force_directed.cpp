@@ -13,14 +13,23 @@
 #define LEFT 2
 #define UP 3
 #define DEFAULT_METHOD 0
+#define LATENCY_METHOD 1
+#define DEFAULT_METHOD_NEW 2
 #define eps 1e-6
 
 
-int count;
+long long count;
+const int direct_x[4] = {1, 0, -1, 0};
+const int direct_y[4] = {0, -1, 0, 1};
+
+inline double cost_func_manhattan(Pos pos_u, Pos pos_v, double weight){
+    return weight * (abs(pos_u.x - pos_v.x) + abs(pos_u.y - pos_v.y));
+}
+
 
 inline void add_force(Pos pos_u, Pos pos_v, int index_u, int index_v, double weight, double forces[][4], int method=DEFAULT_METHOD){
-    //if (method == DEFAULT_METHOD) {
     count ++;
+    if (method == DEFAULT_METHOD) {
         if (pos_u.x != pos_v.x) {
             int sign = sign(pos_v.x - pos_u.x);
             forces[index_u][RIGHT] += weight * sign;
@@ -65,7 +74,27 @@ inline void add_force(Pos pos_u, Pos pos_v, int index_u, int index_v, double wei
                 }
             }
         }
-    //}
+    }
+    else if (method == LATENCY_METHOD){
+
+    }
+    else if (method == DEFAULT_METHOD_NEW){
+        double init_cost = cost_func_manhattan(pos_u, pos_v, weight);
+        for(int k = 0; k < 4; ++k){
+            Pos new_pos_u(pos_u.x + direct_x[k], pos_u.y + direct_y[k]);
+            if(new_pos_u == pos_v);
+            else{
+                forces[index_u][k] += init_cost - cost_func_manhattan(new_pos_u, pos_v, weight);
+            }
+        }
+        for(int k = 0; k < 4; ++k){
+            Pos new_pos_v(pos_v.x + direct_x[k], pos_v.y + direct_y[k]);
+            if(new_pos_v == pos_u);
+            else{
+                forces[index_v][k] += init_cost - cost_func_manhattan(pos_u, new_pos_v, weight);
+            }
+        }
+    }
 }
 
 void print_mapping(int * index, int size_x, int size_y){
@@ -77,6 +106,7 @@ void print_mapping(int * index, int size_x, int size_y){
     printf("**********************\n");
 
 }
+
 Placement ForceDirected::do_mapping(Machine & machine, Network & network) {
     printf("mapping start, algorithm: force directed\n");
     RandomMapping randomMapping;
@@ -118,9 +148,12 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
     auto pairs = new SwapPair[pair_num + 1];
     pairs[pair_num].force = -1;
     auto connect_pairs = new int[core_num][4];
-    for(int i = 0; i < core_num; ++i)
+
+    // build connect pair
+    for(int i = 0; i < core_num; ++i){
         for(int j = 0; j < 4; ++j)
             connect_pairs[i][j] = pair_num;
+    }
     for(int i = 0; i < size_x - 1; ++i){
         for (int j = 0; j < size_y; ++j){
             pairs[now_pair_num].pos_u = Pos(i, j);
@@ -147,6 +180,8 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
             now_pair_num++;
         }
     }
+
+
     int time_step = 1;
     auto in_queue = new int[pair_num + 1];
     int * queue[2];
@@ -181,14 +216,14 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
             if(forces[pair.index_u][pair.direct_u] + forces[pair.index_v][pair.direct_v] > pair.force - eps){
                 //do swap
                 SwapPair old_copy(pair);
+                /*
                 //printf("%f %f \n",last - Evaluator::evaluate(placement), forces[pair.index_u][pair.direct_u] + forces[pair.index_v][pair.direct_v]);
                 //last = Evaluator::evaluate(placement);
 
                 //printf("swapping%d %d\n",old_copy.index_u,old_copy.index_v);
                 //print_mapping(placement.index, size_x, size_y);
                 //printf("%f ", pair.force);
-
-
+*/
                 for(auto j: placement.network.edges[old_copy.index_u]){
                     add_force(placement.mapping[old_copy.index_u], placement.mapping[j.to], old_copy.index_u, j.to, -j.weight, forces);
                 }
@@ -212,6 +247,7 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
                         }
                     }
                 }
+                // add related pairs in next iteration
                 for(auto j: placement.network.edges[old_copy.index_v]){
                     if(j.to != old_copy.index_u) {
                         add_force(placement.mapping[old_copy.index_v], placement.mapping[j.to],  old_copy.index_v, j.to, j.weight,
@@ -241,6 +277,7 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
                 }
             }
         }
+        // add possible pairs in current queue
         for(int i = top; i < queue_num[now]; ++i){
             if(in_queue[queue[now][i]] != time_step) {
                 queue[next][queue_num[next]++] = queue[now][i];
@@ -248,6 +285,7 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
             }
         }
         int t_num = 0;
+        // check pairs in next iteration do improve
         for(int i = 0; i < queue_num[next]; ++i){
             SwapPair & pair = pairs[queue[next][i]];
             pair.index_u = placement.index[pos2code(pair.pos_u, size_y)];
@@ -258,6 +296,8 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
             }
         }
         queue_num[next] = t_num;
+
+
         if(t_num == 0)
             loop_condition = false;
     }

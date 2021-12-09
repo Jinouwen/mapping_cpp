@@ -12,6 +12,9 @@ struct Pos{
     int x,y;
     Pos (int x,int y):x(x),y(y){};
     Pos ():x(0),y(0){}
+    bool operator == (const Pos &b) const{
+        return x == b.x && y == b.y;
+    }
 };
 inline int get_manhattan_dis(Pos u, Pos v){
     return abs(u.x - v.x) + abs(u.y - v.y);

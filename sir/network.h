@@ -18,6 +18,7 @@ public:
     Network(int);
     ~Network();
     static Network make_random_net(int, int, int=0);
+    static Network make_random_conv_net(int, int, int, int=0);
 };
 
 

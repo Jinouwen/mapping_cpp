@@ -1,0 +1,207 @@
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:1024
+Net: random weight conv net
+layer num: 32, node per layer: 32
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+mapping_done count:96084
+duration: 0.002000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:338046
+duration: 0.009000
+hilbert:15747.4
+random:39404.9
+zigzag:30252.2
+circle:61744.3
+FD:15406.5
+hilbert + FD:8679.86
+hilbert longest:14
+random longest:59
+zigzag longest:32
+circle longest:35
+FD longest:55
+hilbert + FD longest:22
+
+
+
+destroy net
+core num:4096
+Net: random weight conv net
+layer num: 64, node per layer: 64
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+mapping_done count:599312
+duration: 0.021000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:3217402
+duration: 0.122000
+hilbert:79974
+random:331283
+zigzag:252489
+circle:510729
+FD:114984
+hilbert + FD:48450.5
+hilbert longest:22
+random longest:118
+zigzag longest:64
+circle longest:67
+FD longest:111
+hilbert + FD longest:36
+
+
+
+destroy net
+core num:16384
+Net: random weight conv net
+layer num: 128, node per layer: 128
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+mapping_done count:3230174
+duration: 0.165000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:28457192
+duration: 1.381000
+hilbert:537808
+random:2.72967e+06
+zigzag:2.0514e+06
+circle:4.13202e+06
+FD:893594
+hilbert + FD:292819
+hilbert longest:30
+random longest:243
+zigzag longest:128
+circle longest:131
+FD longest:237
+hilbert + FD longest:50
+
+
+
+destroy net
+core num:65536
+Net: random weight conv net
+layer num: 256, node per layer: 256
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+mapping_done count:21114496
+duration: 1.327000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:237112392
+duration: 16.337000
+hilbert:2.6232e+06
+random:2.2049e+07
+zigzag:1.65756e+07
+circle:3.32914e+07
+FD:6.77742e+06
+hilbert + FD:1.56083e+06
+hilbert longest:46
+random longest:490
+zigzag longest:256
+circle longest:259
+FD longest:492
+hilbert + FD longest:88
+
+
+
+destroy net
+core num:262144
+Net: random weight conv net
+layer num: 512, node per layer: 512
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.002000
+mapping start, algorithm: force directed
+mapping_done count:107129758
+duration: 9.462000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:1960029682
+duration: 190.795000
+hilbert:1.74737e+07
+random:1.77685e+08
+zigzag:1.33379e+08
+circle:2.67327e+08
+FD:5.16583e+07
+hilbert + FD:9.29458e+06
+hilbert longest:62
+random longest:1005
+zigzag longest:512
+circle longest:515
+FD longest:997
+hilbert + FD longest:105
+
+
+
+destroy net
+core num:1048576
+Net: random weight conv net
+layer num: 1024, node per layer: 1024
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.010000
+mapping start, algorithm: force directed
+mapping_done count:706780928
+duration: 90.248000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:-1215400724
+duration: 2334.536000
+hilbert:8.43562e+07
+random:1.42659e+09
+zigzag:1.07059e+09
+circle:2.14311e+09
+FD:4.06464e+08
+hilbert + FD:4.9192e+07
+hilbert longest:94
+random longest:2005
+zigzag longest:1024
+circle longest:1027
+FD longest:2030
+hilbert + FD longest:180
+
+
+
+destroy net
+
+Process finished with exit code 0

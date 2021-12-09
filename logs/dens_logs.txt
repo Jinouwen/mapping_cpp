@@ -1,0 +1,164 @@
+
+**********************************************************************
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:65536
+layer num: 256, node per layer: 256
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+11mapping_done count:1280675756
+duration: 14.291000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+11mapping_done count:2091207146
+duration: 318.720000
+hilbert:1.77388e+08
+random:1.42047e+09
+zigzag:7.18544e+08
+circle:2.03981e+09
+FD:4.25398e+08
+hilbert + FD:1.66867e+08
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:1024
+layer num: 32, node per layer: 32
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+11mapping_done count:836012
+duration: 0.011000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+11mapping_done count:3490896
+duration: 0.059000
+hilbert:113847
+random:328175
+zigzag:179048
+circle:467345
+FD:143038
+hilbert + FD:99744.7
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:4096
+layer num: 64, node per layer: 64
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+11mapping_done count:9218810
+duration: 0.124000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+11mapping_done count:63325686
+duration: 1.009000
+hilbert:1.34886e+06
+random:5.40446e+06
+zigzag:2.83634e+06
+circle:7.76303e+06
+FD:2.15999e+06
+hilbert + FD:1.23143e+06
+
+Process finished with exit code 0
+
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:16384
+layer num: 128, node per layer: 128
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+11mapping_done count:113984590
+duration: 1.438000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+11mapping_done count:1068381612
+duration: 15.703000
+hilbert:1.52928e+07
+random:8.81052e+07
+zigzag:4.50847e+07
+circle:1.26384e+08
+FD:3.35332e+07
+hilbert + FD:1.4063e+07
+
+Process finished with exit code 0
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:65536
+layer num: 256, node per layer: 256
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: force directed
+mapping_done count:1280675756
+duration: 14.807000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:2091207146
+duration: 327.573000
+hilbert:1.77388e+08
+random:1.42047e+09
+zigzag:7.18544e+08
+circle:2.03981e+09
+FD:4.25398e+08
+hilbert + FD:1.66867e+08
+
+Process finished with exit code 0
+
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+core num:262144
+layer num: 512, node per layer: 512
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.003000
+mapping start, algorithm: force directed
+mapping_done count:-389640758
+duration: 234.517000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+hilbert:1.9837e+09
+random:2.28141e+10
+zigzag:1.14743e+10
+circle:3.27792e+10
+hilbert + FD:1.86491e+09
+
+Process finished with exit code 0
