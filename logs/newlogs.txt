@@ -1,0 +1,277 @@
+/Users/jinouwen/CLionProjects/mapping/cmake-build-release/mapping
+
+
+
+core num:1024
+Net: random weight conv net
+layer num: 32, node per layer: 32
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:92972
+duration: 0.003000
+mapping start, algorithm: force directed
+mapping_done count:321612
+duration: 0.011000
+mapping start, algorithm: force directed
+mapping_done count:495366
+duration: 0.021000
+mapping start, algorithm: force directed
+mapping_done count:110782
+duration: 0.004000
+hilbert cost:15747.4
+random cost:39404.9
+zigzag cost:30252.2
+circle cost:61744.3
+FD_cost cost:15437.2
+FD_longest cost8036.99
+hilbert_FD_cost cost:8643.4
+hilbert_FD_longest cost:9047.97
+hilbert longest:14
+random longest:59
+zigzag longest:32
+circle longest:35
+FD_cost longest:54
+FD_longest longest19
+hilbert_FD_cost longest:21
+hilbert_FD_longest longest:15
+destroy net
+
+
+
+core num:4096
+Net: random weight conv net
+layer num: 64, node per layer: 64
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:580068
+duration: 0.029000
+mapping start, algorithm: force directed
+mapping_done count:3064674
+duration: 0.175000
+mapping start, algorithm: force directed
+mapping_done count:4685694
+duration: 0.260000
+mapping start, algorithm: force directed
+mapping_done count:952872
+duration: 0.039000
+hilbert cost:79974
+random cost:331283
+zigzag cost:252489
+circle cost:510729
+FD_cost cost:117023
+FD_longest cost52908.8
+hilbert_FD_cost cost:48494.3
+hilbert_FD_longest cost:48466.1
+hilbert longest:22
+random longest:118
+zigzag longest:64
+circle longest:67
+FD_cost longest:113
+FD_longest longest25
+hilbert_FD_cost longest:37
+hilbert_FD_longest longest:20
+destroy net
+
+
+
+core num:16384
+Net: random weight conv net
+layer num: 128, node per layer: 128
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:3003958
+duration: 0.136000
+mapping start, algorithm: force directed
+mapping_done count:27518396
+duration: 1.940000
+mapping start, algorithm: force directed
+mapping_done count:46207220
+duration: 2.761000
+mapping start, algorithm: force directed
+mapping_done count:4724480
+duration: 0.279000
+hilbert cost:537808
+random cost:2.72967e+06
+zigzag cost:2.0514e+06
+circle cost:4.13202e+06
+FD_cost cost:896977
+FD_longest cost322887
+hilbert_FD_cost cost:291990
+hilbert_FD_longest cost:283794
+hilbert longest:30
+random longest:243
+zigzag longest:128
+circle longest:131
+FD_cost longest:232
+FD_longest longest46
+hilbert_FD_cost longest:50
+hilbert_FD_longest longest:30
+destroy net
+
+
+
+core num:65536
+Net: random weight conv net
+layer num: 256, node per layer: 256
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:20438680
+duration: 1.895000
+mapping start, algorithm: force directed
+mapping_done count:231465702
+duration: 18.929000
+mapping start, algorithm: force directed
+mapping_done count:419526096
+duration: 31.833000
+mapping start, algorithm: force directed
+mapping_done count:42451420
+duration: 3.085000
+hilbert cost:2.6232e+06
+random cost:2.2049e+07
+zigzag cost:1.65756e+07
+circle cost:3.32914e+07
+FD_cost cost:6.7138e+06
+FD_longest cost1.97031e+06
+hilbert_FD_cost cost:1.55694e+06
+hilbert_FD_longest cost:1.40152e+06
+hilbert longest:46
+random longest:490
+zigzag longest:256
+circle longest:259
+FD_cost longest:495
+FD_longest longest63
+hilbert_FD_cost longest:87
+hilbert_FD_longest longest:42
+destroy net
+
+
+
+core num:262144
+Net: random weight conv net
+layer num: 512, node per layer: 512
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.002000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:97315204
+duration: 9.940000
+mapping start, algorithm: force directed
+mapping_done count:1907316608
+duration: 217.658000
+mapping start, algorithm: force directed
+mapping_done count:3701345932
+duration: 491.270000
+mapping start, algorithm: force directed
+mapping_done count:232196832
+duration: 26.976000
+hilbert cost:1.74737e+07
+random cost:1.77685e+08
+zigzag cost:1.33379e+08
+circle cost:2.67327e+08
+FD_cost cost:5.13e+07
+FD_longest cost1.23822e+07
+hilbert_FD_cost cost:9.32184e+06
+hilbert_FD_longest cost:7.92633e+06
+hilbert longest:62
+random longest:1005
+zigzag longest:512
+circle longest:515
+FD_cost longest:977
+FD_longest longest101
+hilbert_FD_cost longest:103
+hilbert_FD_longest longest:44
+destroy net
+
+
+
+core num:1048576
+Net: random weight conv net
+layer num: 1024, node per layer: 1024
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.011000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:674274596
+duration: 95.735000
+mapping start, algorithm: force directed
+mapping_done count:15491029598
+duration: 2218.543000
+mapping start, algorithm: force directed
+mapping_done count:32631903096
+duration: 5667.967000
+mapping start, algorithm: force directed
+mapping_done count:1622404302
+duration: 256.542000
+hilbert cost:8.43562e+07
+random cost:1.42659e+09
+zigzag cost:1.07059e+09
+circle cost:2.14311e+09
+FD_cost cost:4.05271e+08
+FD_longest cost7.41172e+07
+hilbert_FD_cost cost:4.94818e+07
+hilbert_FD_longest cost:4.10467e+07
+hilbert longest:94
+random longest:2005
+zigzag longest:1024
+circle longest:1027
+FD_cost longest:2022
+FD_longest longest152
+hilbert_FD_cost longest:180
+hilbert_FD_longest longest:94
+destroy net
+
+Process finished with exit code 0
+
+
+    Placement placement_hilbert = hilbert.do_mapping(machine, net);
+    Placement placement_random = random_mapping.do_mapping(machine, net);
+    Placement placement_zigzag = zig_zag.do_mapping(machine, net);
+    Placement placement_circle = circle.do_mapping(machine, net);
+    Placement placement_FD_hilbert_cost = ForceDirected::do_mapping(placement_hilbert, DEFAULT_METHOD);
+    Placement placement_FD_cost = ForceDirected::do_mapping(placement_random, DEFAULT_METHOD);
+    Placement placement_FD_longest = ForceDirected::do_mapping(placement_random, LATENCY_METHOD);
+    Placement placement_FD_hilbert_longest = ForceDirected::do_mapping(placement_hilbert, LATENCY_METHOD);

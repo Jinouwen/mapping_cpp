@@ -9,7 +9,7 @@
 class ForceDirected: public PlacementAlgorithm{
 public:
     Placement do_mapping(Machine &, Network &) override;
-    static Placement do_mapping(Placement &);
+    static Placement do_mapping(Placement &, int=0);
 };
 
 

@@ -15,6 +15,7 @@
 #define DEFAULT_METHOD 0
 #define LATENCY_METHOD 1
 #define DEFAULT_METHOD_NEW 2
+#define LATENCY_METHOD_NEW 3
 #define eps 1e-6
 
 
@@ -25,8 +26,15 @@ const int direct_y[4] = {0, -1, 0, 1};
 inline double cost_func_manhattan(Pos pos_u, Pos pos_v, double weight){
     return weight * (abs(pos_u.x - pos_v.x) + abs(pos_u.y - pos_v.y));
 }
-
-
+inline double cost_func_latency(Pos pos_u, Pos pos_v, double weight){
+    double t = (abs(pos_u.x - pos_v.x) + abs(pos_u.y - pos_v.y));
+    return sign(weight) * t * t;
+}
+inline double cost_func_latency2(Pos pos_u, Pos pos_v, double weight){
+    double t1 = abs(pos_u.x - pos_v.x);
+    double t2 = abs(pos_u.y - pos_v.y);
+    return sign(weight) * (t1 * t1 + t2 * t2);
+}
 inline void add_force(Pos pos_u, Pos pos_v, int index_u, int index_v, double weight, double forces[][4], int method=DEFAULT_METHOD){
     count ++;
     if (method == DEFAULT_METHOD) {
@@ -76,7 +84,21 @@ inline void add_force(Pos pos_u, Pos pos_v, int index_u, int index_v, double wei
         }
     }
     else if (method == LATENCY_METHOD){
-
+        double init_cost = cost_func_latency(pos_u, pos_v, weight);
+        for(int k = 0; k < 4; ++k){
+            Pos new_pos_u(pos_u.x + direct_x[k], pos_u.y + direct_y[k]);
+            if(new_pos_u == pos_v);
+            else{
+                forces[index_u][k] += init_cost - cost_func_latency(new_pos_u, pos_v, weight);
+            }
+        }
+        for(int k = 0; k < 4; ++k){
+            Pos new_pos_v(pos_v.x + direct_x[k], pos_v.y + direct_y[k]);
+            if(new_pos_v == pos_u);
+            else{
+                forces[index_v][k] += init_cost - cost_func_latency(pos_u, new_pos_v, weight);
+            }
+        }
     }
     else if (method == DEFAULT_METHOD_NEW){
         double init_cost = cost_func_manhattan(pos_u, pos_v, weight);
@@ -92,6 +114,23 @@ inline void add_force(Pos pos_u, Pos pos_v, int index_u, int index_v, double wei
             if(new_pos_v == pos_u);
             else{
                 forces[index_v][k] += init_cost - cost_func_manhattan(pos_u, new_pos_v, weight);
+            }
+        }
+    }
+    else if  (method == LATENCY_METHOD_NEW){
+        double init_cost = cost_func_latency2(pos_u, pos_v, weight);
+        for(int k = 0; k < 4; ++k){
+            Pos new_pos_u(pos_u.x + direct_x[k], pos_u.y + direct_y[k]);
+            if(new_pos_u == pos_v);
+            else{
+                forces[index_u][k] += init_cost - cost_func_latency2(new_pos_u, pos_v, weight);
+            }
+        }
+        for(int k = 0; k < 4; ++k){
+            Pos new_pos_v(pos_v.x + direct_x[k], pos_v.y + direct_y[k]);
+            if(new_pos_v == pos_u);
+            else{
+                forces[index_v][k] += init_cost - cost_func_latency2(pos_u, new_pos_v, weight);
             }
         }
     }
@@ -124,10 +163,10 @@ struct SwapPair{
 };
 
 
-Placement ForceDirected::do_mapping(Placement & init_placement) {
+Placement ForceDirected::do_mapping(Placement & init_placement, int method) {
     printf("mapping start, algorithm: force directed\n");
     auto start = std::chrono::system_clock::now();
-    double percentage = 0.5;
+    double percentage = 0.3;
     count = 0;
     Placement placement(init_placement.machine, init_placement.network);
     memcpy(placement.mapping, init_placement.mapping, sizeof(Pos) * placement.core_num);
@@ -138,7 +177,7 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
     for (int i = 0; i < core_num; ++i){
         for (auto j: placement.network.edges[i]){
             if(j.is_reverse) continue;
-            add_force(placement.mapping[i], placement.mapping[j.to], i, j.to, j.weight, forces);
+            add_force(placement.mapping[i], placement.mapping[j.to], i, j.to, j.weight, forces, method);
         }
     }
     int size_x = placement.machine.size_x;
@@ -225,11 +264,11 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
                 //printf("%f ", pair.force);
 */
                 for(auto j: placement.network.edges[old_copy.index_u]){
-                    add_force(placement.mapping[old_copy.index_u], placement.mapping[j.to], old_copy.index_u, j.to, -j.weight, forces);
+                    add_force(placement.mapping[old_copy.index_u], placement.mapping[j.to], old_copy.index_u, j.to, -j.weight, forces, method);
                 }
                 for(auto j: placement.network.edges[old_copy.index_v]){
                     if( j.to != old_copy.index_u)
-                        add_force(placement.mapping[old_copy.index_v], placement.mapping[j.to], old_copy.index_v, j.to, -j.weight, forces);
+                        add_force(placement.mapping[old_copy.index_v], placement.mapping[j.to], old_copy.index_v, j.to, -j.weight, forces, method);
                 }
                 placement.mapping[old_copy.index_u] = old_copy.pos_v;
                 placement.mapping[old_copy.index_v] = old_copy.pos_u;
@@ -238,7 +277,7 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
                 pair.index_v = old_copy.index_u;
                 pair.index_u = old_copy.index_v;
                 for(auto j: placement.network.edges[old_copy.index_u]){
-                    add_force(placement.mapping[old_copy.index_u], placement.mapping[j.to],  old_copy.index_u, j.to, j.weight, forces);
+                    add_force(placement.mapping[old_copy.index_u], placement.mapping[j.to],  old_copy.index_u, j.to, j.weight, forces, method);
                     for(int k = 0; k < 4; ++k){
                         int code = pos2code(placement.mapping[j.to], size_y);
                         if(in_queue[connect_pairs[code][k]] != time_step){
@@ -251,7 +290,7 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
                 for(auto j: placement.network.edges[old_copy.index_v]){
                     if(j.to != old_copy.index_u) {
                         add_force(placement.mapping[old_copy.index_v], placement.mapping[j.to],  old_copy.index_v, j.to, j.weight,
-                                  forces);
+                                  forces, method);
                         for(int k = 0; k < 4; ++k){
                             int code = pos2code(placement.mapping[j.to], size_y);
                             if(in_queue[connect_pairs[code][k]] != time_step){
@@ -307,7 +346,7 @@ Placement ForceDirected::do_mapping(Placement & init_placement) {
     delete[] queue[0];
     delete[] queue[1];
     delete[] connect_pairs;
-    printf("mapping_done count:%d\n",count);
+    printf("mapping_done count:%lld\n", count);
     auto end = std::chrono::system_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
     printf("duration: %f\n",double (duration.count())/std::chrono::milliseconds::period::den);
