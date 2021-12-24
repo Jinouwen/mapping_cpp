@@ -6,10 +6,13 @@
 #define MAPPING_EVALUATOR_H
 #include "placement.h"
 
+
+
 class Evaluator {
 public:
     static double weighted_length_total(const Placement &placement);
     static double longest_path(const Placement &placement);
+    static std::pair<double, double> congestion(const Placement &placement);
 };
 
 

@@ -19,13 +19,13 @@ mapping_done count:92972
 duration: 0.003000
 mapping start, algorithm: force directed
 mapping_done count:321612
-duration: 0.014000
+duration: 0.011000
 mapping start, algorithm: force directed
 mapping_done count:513726
-duration: 0.022000
+duration: 0.020000
 mapping start, algorithm: force directed
 mapping_done count:188106
-duration: 0.008000
+duration: 0.007000
 hilbert cost:15747.4
 random cost:39404.9
 zigzag cost:30252.2
@@ -42,6 +42,20 @@ FD_cost longest:54
 FD_longest longest14
 hilbert_FD_cost longest:21
 hilbert_FD_longest longest:11
+random average congestion: 19.8613
+zigzag average congestion: 15.2481
+circle average congestion: 31.1211
+FD_hilbert_cost average congestion: 4.35655
+FD_cost average congestion: 7.78087
+FD_longest average congestion: 3.38322
+FD_hilbert_longest average congestion: 3.53558
+random max congestion:40.3534
+zigzag max congestion:62.1401
+circle max congestion:69.8863
+FD_hilbert_cost max congestion:12.6448
+FD_cost max congestion:19.975
+FD_longest max congestion:10.6131
+FD_hilbert_longest max congestion:10.3033
 destroy net
 
 
@@ -60,16 +74,16 @@ mapping start, algorithm: circle
 mapping_done
 mapping start, algorithm: force directed
 mapping_done count:580068
-duration: 0.029000
+duration: 0.024000
 mapping start, algorithm: force directed
 mapping_done count:3064674
-duration: 0.154000
+duration: 0.149000
 mapping start, algorithm: force directed
 mapping_done count:5129532
-duration: 0.271000
+duration: 0.272000
 mapping start, algorithm: force directed
 mapping_done count:1071768
-duration: 0.047000
+duration: 0.046000
 hilbert cost:79974
 random cost:331283
 zigzag cost:252489
@@ -86,6 +100,20 @@ FD_cost longest:113
 FD_longest longest24
 hilbert_FD_cost longest:37
 hilbert_FD_longest longest:20
+random average congestion: 41.0818
+zigzag average congestion: 31.3106
+circle average congestion: 63.3345
+FD_hilbert_cost average congestion: 6.01368
+FD_cost average congestion: 14.5118
+FD_longest average congestion: 5.54793
+FD_hilbert_longest average congestion: 5.33088
+random max congestion:85.1472
+zigzag max congestion:130.317
+circle max congestion:181.76
+FD_hilbert_cost max congestion:18.559
+FD_cost max congestion:33.1767
+FD_longest max congestion:14.8391
+FD_hilbert_longest max congestion:15.0256
 destroy net
 
 
@@ -104,16 +132,16 @@ mapping start, algorithm: circle
 mapping_done
 mapping start, algorithm: force directed
 mapping_done count:3003958
-duration: 0.215000
+duration: 0.141000
 mapping start, algorithm: force directed
 mapping_done count:27518396
-duration: 1.675000
+duration: 1.610000
 mapping start, algorithm: force directed
 mapping_done count:51746796
-duration: 2.590000
+duration: 2.844000
 mapping start, algorithm: force directed
 mapping_done count:9569560
-duration: 0.447000
+duration: 0.485000
 hilbert cost:537808
 random cost:2.72967e+06
 zigzag cost:2.0514e+06
@@ -130,6 +158,20 @@ FD_cost longest:232
 FD_longest longest30
 hilbert_FD_cost longest:50
 hilbert_FD_longest longest:22
+random average congestion: 83.9587
+zigzag average congestion: 63.0966
+circle average congestion: 127.092
+FD_hilbert_cost average congestion: 8.98098
+FD_cost average congestion: 27.5891
+FD_longest average congestion: 7.18109
+FD_hilbert_longest average congestion: 6.29572
+random max congestion:175.392
+zigzag max congestion:262.441
+circle max congestion:442.83
+FD_hilbert_cost max congestion:29.533
+FD_cost max congestion:56.0972
+FD_longest max congestion:23.5024
+FD_hilbert_longest max congestion:17.9658
 destroy net
 
 
@@ -148,16 +190,16 @@ mapping start, algorithm: circle
 mapping_done
 mapping start, algorithm: force directed
 mapping_done count:20438680
-duration: 1.728000
+duration: 1.679000
 mapping start, algorithm: force directed
 mapping_done count:231465702
-duration: 21.274000
+duration: 19.297000
 mapping start, algorithm: force directed
 mapping_done count:475630242
-duration: 41.142000
+duration: 37.623000
 mapping start, algorithm: force directed
 mapping_done count:68700440
-duration: 5.952000
+duration: 5.070000
 hilbert cost:2.6232e+06
 random cost:2.2049e+07
 zigzag cost:1.65756e+07
@@ -174,6 +216,20 @@ FD_cost longest:495
 FD_longest longest42
 hilbert_FD_cost longest:87
 hilbert_FD_longest longest:31
+random average congestion: 168.88
+zigzag average congestion: 126.957
+circle average congestion: 254.989
+FD_hilbert_cost average congestion: 11.9251
+FD_cost average congestion: 51.4231
+FD_longest average congestion: 9.37251
+FD_hilbert_longest average congestion: 7.96574
+random max congestion:352.236
+zigzag max congestion:522.125
+circle max congestion:1064.52
+FD_hilbert_cost max congestion:39.1572
+FD_cost max congestion:103.481
+FD_longest max congestion:33.4253
+FD_hilbert_longest max congestion:25.2031
 destroy net
 
 
@@ -183,7 +239,7 @@ Net: random weight conv net
 layer num: 512, node per layer: 512
 mapping start, algorithm: hilbert curve
 mapping done
-duration: 0.003000
+duration: 0.002000
 mapping start, algorithm: random mapping
 mapping_done
 mapping start, algorithm: zig
@@ -192,16 +248,16 @@ mapping start, algorithm: circle
 mapping_done
 mapping start, algorithm: force directed
 mapping_done count:97315204
-duration: 10.666000
+duration: 10.476000
 mapping start, algorithm: force directed
 mapping_done count:1907316608
-duration: 252.554000
+duration: 229.428000
 mapping start, algorithm: force directed
 mapping_done count:4268236014
-duration: 606.145000
+duration: 551.850000
 mapping start, algorithm: force directed
 mapping_done count:456025256
-duration: 66.515000
+duration: 54.514000
 hilbert cost:1.74737e+07
 random cost:1.77685e+08
 zigzag cost:1.33379e+08
@@ -218,6 +274,20 @@ FD_cost longest:977
 FD_longest longest60
 hilbert_FD_cost longest:103
 hilbert_FD_longest longest:41
+random average congestion: 339.571
+zigzag average congestion: 254.898
+circle average congestion: 510.883
+FD_hilbert_cost average congestion: 17.8148
+FD_cost average congestion: 98.0385
+FD_longest average congestion: 13.3024
+FD_hilbert_longest average congestion: 9.96054
+random max congestion:706.571
+zigzag max congestion:1043.74
+circle max congestion:2485.98
+FD_hilbert_cost max congestion:60.9039
+FD_cost max congestion:183.884
+FD_longest max congestion:42.6492
+FD_hilbert_longest max congestion:30.0551
 destroy net
 
 
@@ -227,7 +297,7 @@ Net: random weight conv net
 layer num: 1024, node per layer: 1024
 mapping start, algorithm: hilbert curve
 mapping done
-duration: 0.011000
+duration: 0.012000
 mapping start, algorithm: random mapping
 mapping_done
 mapping start, algorithm: zig
@@ -236,16 +306,16 @@ mapping start, algorithm: circle
 mapping_done
 mapping start, algorithm: force directed
 mapping_done count:674274596
-duration: 105.829000
+duration: 99.730000
 mapping start, algorithm: force directed
 mapping_done count:15491029598
-duration: 2938.538000
+duration: 2440.949000
 mapping start, algorithm: force directed
 mapping_done count:37159909982
-duration: 7684.670000
+duration: 7611.419000
 mapping start, algorithm: force directed
 mapping_done count:3024596412
-duration: 513.221000
+duration: 471.030000
 hilbert cost:8.43562e+07
 random cost:1.42659e+09
 zigzag cost:1.07059e+09
@@ -262,15 +332,26 @@ FD_cost longest:2022
 FD_longest longest86
 hilbert_FD_cost longest:180
 hilbert_FD_longest longest:55
+random average congestion: 680.917
+zigzag average congestion: 510.996
+circle average congestion: 1022.91
+FD_hilbert_cost average congestion: 23.6178
+FD_cost average congestion: 193.437
+FD_longest average congestion: 18.3561
+FD_hilbert_longest average congestion: 13.571
+random max congestion:1417.77
+zigzag max congestion:2087.85
+circle max congestion:5689.2
+FD_hilbert_cost max congestion:78.2767
+FD_cost max congestion:337.321
+FD_longest max congestion:59.0527
+FD_hilbert_longest max congestion:42.1346
 destroy net
 
 Process finished with exit code 0
 
 
-
-
-
-    Placement placement_hilbert = hilbert.do_mapping(machine, net);
+Placement placement_hilbert = hilbert.do_mapping(machine, net);
     Placement placement_random = random_mapping.do_mapping(machine, net);
     Placement placement_zigzag = zig_zag.do_mapping(machine, net);
     Placement placement_circle = circle.do_mapping(machine, net);

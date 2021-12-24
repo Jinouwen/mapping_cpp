@@ -33,7 +33,6 @@ Network Network::make_random_net(int layer_num, int node_per_layer, int method) 
         }
     }
     return net;
-    // Dependency compiler optimization, automatic return of references, extended life cycle
 }
 
 Network::~Network() {
@@ -60,6 +59,5 @@ Network Network::make_random_conv_net(int layer_num, int node_per_layer, int ker
         }
     }
     return net;
-    // Dependency compiler optimization, automatic return of references, extended life cycle
 }
 

@@ -42,3 +42,51 @@ double Evaluator::longest_path(const Placement &placement) {
     return longest;
 }
 
+
+std::pair<double,double> Evaluator::congestion(const Placement &placement) {
+    #define get_right(x,y) ((x)*size_y+(y)+size_total)
+    #define get_up(x,y) ((x)*(size_y-1)+(y))
+    auto & machine = placement.machine;
+    auto & edges = placement.network.edges;
+    auto & mapping = placement.mapping;
+    auto & node_num = placement.network.node_num;
+    int route_num = 2 * machine.size_x * machine.size_y - machine.size_x - machine.size_y;
+    auto * route = new double[route_num]();
+    int size_y = machine.size_y;
+    int size_x = machine.size_x;
+    int size_total = (size_y - 1) * size_x;
+    for (int i = 0; i < node_num; ++i){
+        for (auto j: edges[i]){
+            if (j.is_reverse) continue;
+            int from = i;
+            int to = j.to;
+            Pos pos_u = mapping[from];
+            Pos pos_v = mapping[to];
+            int x_min = std::min(pos_u.x, pos_v.x);
+            int x_max = std::max(pos_u.x, pos_v.x);
+            int y_min = std::min(pos_u.y, pos_v.y);
+            int y_max = std::max(pos_u.y, pos_v.y);
+            double right_base = y_max - y_min + 1;
+            double up_base = x_max - x_min + 1;
+            for (int xx = x_min; xx < x_max; ++xx){
+                for (int yy = y_min; yy <= y_max; ++yy){
+                    route[get_right(xx,yy)] += j.weight / right_base;
+                }
+            }
+            for (int yy = y_min; yy < y_max; ++yy){
+                for (int xx = x_min; xx <= x_max; ++xx){
+                    route[get_up(xx,yy)] += j.weight / up_base;
+                }
+            }
+        }
+    }
+    double sum = 0;
+    double max_congestion;
+    for (int i = 0; i < route_num; ++i){
+        sum += route[i];
+        max_congestion = std::max(max_congestion, route[i]);
+    }
+    double average = sum / route_num;
+    return {average, max_congestion};
+}
+
