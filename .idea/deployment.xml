@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Remote Host (886c8503-99ab-42a0-b24e-ad0103f2c8c4)" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="Remote Host (886c8503-99ab-42a0-b24e-ad0103f2c8c4)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/ouwen/CLionProjects/mapping" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-remote-host" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release-remote-host" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

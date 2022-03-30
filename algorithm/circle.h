@@ -6,6 +6,7 @@
 #define MAPPING_CIRCLE_H
 
 #include "placementalgorithm.h"
+#include "cstdio"
 
 class Circle: public PlacementAlgorithm{
 public:

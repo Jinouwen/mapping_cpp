@@ -7,6 +7,7 @@
 
 #include "machine.h"
 #include "network.h"
+#include "cstdlib"
 
 struct Pos{
     int x,y;

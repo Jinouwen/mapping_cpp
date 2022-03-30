@@ -6,7 +6,7 @@
 #define MAPPING_RANDOMMAPPING_H
 
 #include <random>
-
+#include "algorithm"
 #include "placementalgorithm.h"
 
 class RandomMapping:public PlacementAlgorithm{

@@ -5,6 +5,8 @@
 #ifndef MAPPING_NETWORK_H
 #define MAPPING_NETWORK_H
 #include <vector>
+#include <string>
+
 struct Edge{
     int to;
     double weight;
@@ -15,10 +17,11 @@ class Network {
 public:
     int node_num;
     std::vector<Edge> *edges;
-    Network(int);
+    explicit Network(int);
     ~Network();
     static Network make_random_net(int, int, int=0);
     static Network make_random_conv_net(int, int, int, int=0);
+    static Network load_from_files(const std::string& config_filename);
 };
 
 

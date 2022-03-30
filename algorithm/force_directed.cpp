@@ -7,6 +7,7 @@
 #include "queue"
 #include "evaluator.h"
 #include "chrono"
+#include "cstring"
 #define sign(x) ( ((x) <0 )? -1 : ((x)> 0) )
 #define RIGHT 0
 #define DOWN 1
@@ -171,10 +172,10 @@ Placement ForceDirected::do_mapping(Placement & init_placement, int method) {
     Placement placement(init_placement.machine, init_placement.network);
     memcpy(placement.mapping, init_placement.mapping, sizeof(Pos) * placement.core_num);
     memcpy(placement.index, init_placement.index, sizeof(int) * placement.core_num);
-    int core_num = placement.machine.core_num;
-    auto forces = new double[core_num][4];
-    memset(forces,0,sizeof(double) * core_num * 4);
-    for (int i = 0; i < core_num; ++i){
+    int node_num = placement.network.node_num;
+    auto forces = new double[node_num][4];
+    memset(forces,0, sizeof(double) * node_num * 4);
+    for (int i = 0; i < node_num; ++i){
         for (auto j: placement.network.edges[i]){
             if(j.is_reverse) continue;
             add_force(placement.mapping[i], placement.mapping[j.to], i, j.to, j.weight, forces, method);
@@ -186,10 +187,10 @@ Placement ForceDirected::do_mapping(Placement & init_placement, int method) {
     int now_pair_num = 0;
     auto pairs = new SwapPair[pair_num + 1];
     pairs[pair_num].force = -1;
-    auto connect_pairs = new int[core_num][4];
+    auto connect_pairs = new int[node_num][4];
 
     // build connect pair
-    for(int i = 0; i < core_num; ++i){
+    for(int i = 0; i < node_num; ++i){
         for(int j = 0; j < 4; ++j)
             connect_pairs[i][j] = pair_num;
     }

@@ -5,6 +5,7 @@
 #ifndef MAPPING_ZIGZAG_H
 #define MAPPING_ZIGZAG_H
 #include "placementalgorithm.h"
+#include <cstdio>
 
 class ZigZag:public PlacementAlgorithm{
 public:

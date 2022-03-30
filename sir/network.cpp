@@ -4,6 +4,10 @@
 
 #include "network.h"
 #include <random>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <fstream>
 
 inline void add_two_way_edges(std::vector<Edge > & from_edges, std::vector<Edge > & to_edges, int from, int to, double weight){
     from_edges.emplace_back(to, weight, false);
@@ -60,4 +64,48 @@ Network Network::make_random_conv_net(int layer_num, int node_per_layer, int ker
     }
     return net;
 }
+
+Network Network::load_from_files(const std::string &dir_path) {
+    int node_max = 0;
+    std::vector<std::pair<int, int> > data_ij;
+    std::vector<double> data_w;
+    std::string file_name = dir_path + "/dataij.bin";
+    std::ifstream in_ij(file_name, std::ios::in | std::ios::binary);
+    std::ifstream in_w(dir_path + "/dataw.bin", std::ios::in | std::ios::binary);
+    int source_node, target_node;
+    std::cout << "processing " << file_name << std::endl;
+    if(!in_ij.is_open()){
+        throw std::runtime_error("cant find data file");
+    }
+    int arr_ij[2] = {0};
+    int arr_w[1] = {0};
+    while(!in_ij.eof())
+    {
+        in_ij.read((char*) arr_ij, sizeof arr_ij);
+        source_node = arr_ij[0];
+        target_node = arr_ij[1];
+        node_max = std::max(node_max, source_node);
+        node_max = std::max(node_max, target_node);
+        data_ij.emplace_back(std::pair<int, int> (source_node, target_node));
+    }
+    int weight;
+    while(!in_w.eof())
+    {
+        in_w.read((char*) arr_w, sizeof  arr_w);
+        weight = arr_w[0];
+        data_w.push_back((double) weight);
+    }
+    std::cout << "find node num:" << node_max + 1 << std::endl;
+    std::cout << "find edge num:" << data_ij.size() << std::endl;
+
+    int node_num = int(std::sqrt(node_max + 1));
+    if(node_num * node_num < node_max + 1)
+        node_num += 1;
+    auto net = Network( node_num * node_num);
+    for(int i = 0; i < data_ij.size(); ++i){
+        add_two_way_edges(net.edges[data_ij[i].first], net.edges[data_ij[i].second], data_ij[i].first, data_ij[i].second, data_w[i]);
+    }
+    return net;
+}
+
 
