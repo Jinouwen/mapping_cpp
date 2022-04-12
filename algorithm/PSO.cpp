@@ -59,7 +59,7 @@ Placement PSO::do_mapping(Machine & machine, Network & network) {
     double C1 = 2;
     double C2 = 2;
     int particle_num = network.node_num * 2;
-    int iteration_num = network.node_num * 2;
+    int iteration_num = std::min(network.node_num * 2, 3600);
     int dimension = machine.core_num;
     printf("particle num:%d dimension:%d\n", particle_num, dimension);
     //----------initialize----------------------------------------------
@@ -103,7 +103,7 @@ Placement PSO::do_mapping(Machine & machine, Network & network) {
     //--------------optimization---------------------------------------------
     std::uniform_real_distribution<double> u_real_01 (0,1);
     for (int iteration_count = 0; iteration_count < iteration_num; ++iteration_count){
-        printf("%d\n",iteration_count);
+        std::cout << std::flush << "\r" << iteration_count << "/" << iteration_num;
         //---------------------------------update particle----------------------------------
         for (int i = 0; i < dimension; i++){
             int d_max = i + 1;

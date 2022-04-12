@@ -1,0 +1,74 @@
+(base) ouwen@amax:~/CLionProjects/mapping/cmake-build-release-remote-host$ ./mapping
+processing /tmp/pycharm_project_498/snntoolbox_applications/models/inceptionV3/dataij.bin
+find node num:3570
+find edge num:117597
+
+
+
+mapping start, algorithm: hilbert curve
+mapping done
+duration: 0.000000
+mapping start, algorithm: random mapping
+mapping_done
+mapping start, algorithm: zig
+mapping_done
+mapping start, algorithm: circle
+mapping_done
+mapping start, algorithm: force directed
+mapping_done count:7110607
+duration: 0.100000
+mapping start, algorithm: force directed
+mapping_done count:17015595
+duration: 0.292000
+mapping start, algorithm: force directed
+mapping_done count:25864727
+duration: 0.683000
+mapping start, algorithm: force directed
+mapping_done count:7091753
+duration: 0.196000
+mapping start, algorithm: PSO
+particle num:7200 dimension:3600
+3599/3600duration: 164938.338000
+----------------------cost---------------------
+hilbert cost:6.87932e+10
+random cost:2.19106e+11
+zigzag cost:1.15979e+11
+circle cost:2.82192e+11
+FD_cost cost:1.02129e+11
+FD_longest cost6.80113e+10
+hilbert_FD_cost cost:4.15033e+10
+hilbert_FD_longest cost:4.19035e+10
+pso cost:1.9074e+11
+------------------------longest spiking path-----------------------
+hilbert longest:51
+random longest:114
+zigzag longest:66
+circle longest:118
+FD_cost longest:110
+FD_longest longest74
+hilbert_FD_cost longest:43
+hilbert_FD_longest longest:45
+pso longest:113
+----------------------------congestion----------------------------------
+random average congestion: 3.09471e+07
+zigzag average congestion: 1.63812e+07
+circle average congestion: 3.98577e+07
+FD_hilbert_cost average congestion: 5.86205e+06
+FD_cost average congestion: 1.44251e+07
+FD_longest average congestion: 9.60612e+06
+FD_hilbert_longest average congestion: 5.91857e+06
+pso average congestion:2.69406e+07
+random max congestion:6.47597e+07
+zigzag max congestion:1.83803e+08
+circle max congestion:4.60056e+08
+FD_hilbert_cost max congestion:4.53375e+07
+FD_cost max congestion:8.11339e+07
+FD_longest max congestion:4.81752e+07
+FD_hilbert_longest max congestion:6.14928e+07
+pso max congestion8.81739e+07
+*******************************************************************
+
+destroy net
+destroy net
+Segmentation fault (core dumped)
+(base) ouwen@amax:~/CLionProjects/mapping/cmake-build-release-remote-host$
