@@ -11,7 +11,9 @@
 
 class PlacementAlgorithm {
 public:
+    std::string name;
     virtual Placement do_mapping(Machine &, Network &) = 0;
+    PlacementAlgorithm();
 };
 
 

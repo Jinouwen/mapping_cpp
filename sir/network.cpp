@@ -8,7 +8,7 @@
 #include <iomanip>
 #include <sstream>
 #include <fstream>
-
+#include <cstring>
 inline void add_two_way_edges(std::vector<Edge > & from_edges, std::vector<Edge > & to_edges, int from, int to, double weight){
     from_edges.emplace_back(to, weight, false);
     to_edges.emplace_back(from, weight, true);
@@ -106,6 +106,23 @@ Network Network::load_from_files(const std::string &dir_path) {
         add_two_way_edges(net.edges[data_ij[i].first], net.edges[data_ij[i].second], data_ij[i].first, data_ij[i].second, data_w[i]);
     }
     return net;
+}
+
+Network Network::expansion_net(Network &init_net, int out_node_num) {
+    if(init_net.node_num == out_node_num){
+        return init_net;
+    }
+    auto net = Network(out_node_num);
+    for (int i = 0; i < init_net.node_num; ++i)
+        net.edges[i] = init_net.edges[i];
+    return net;
+}
+
+Network::Network(Network && a) noexcept{
+    std::cerr << "move construct!" << std::endl;
+    node_num = a.node_num;
+    edges = a.edges;
+    a.edges = nullptr;
 }
 
 

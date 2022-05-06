@@ -17,11 +17,16 @@ class Network {
 public:
     int node_num;
     std::vector<Edge> *edges;
+
+    Network(Network&& ) noexcept ;
+    Network(Network& )=default;
+    Network& operator=(const Network&)=default;
     explicit Network(int);
     ~Network();
     static Network make_random_net(int, int, int=0);
     static Network make_random_conv_net(int, int, int, int=0);
     static Network load_from_files(const std::string& config_filename);
+    static Network expansion_net(Network & init_net, int out_node_num);
 };
 
 

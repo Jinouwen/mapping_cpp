@@ -287,8 +287,9 @@ Placement Hilbert::do_mapping(Machine & machine, Network & network) {
     placement.build_index_from_mapping();
     printf("mapping done\n");
     auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    printf("duration: %f\n",double (duration.count())/std::chrono::milliseconds::period::den);
+    double duration = double((std::chrono::duration_cast<std::chrono::milliseconds>(end - start)).count())/std::chrono::milliseconds::period::den;
+    printf("duration: %f\n",duration);
+    placement.time_spent = duration;
     return placement;
 }
 

@@ -6,8 +6,10 @@
 #include "randommapping.h"
 #include "queue"
 #include "evaluator.h"
+#include "visualize.h"
 #include "chrono"
 #include "cstring"
+#include "hilbert.h"
 #define sign(x) ( ((x) <0 )? -1 : ((x)> 0) )
 #define RIGHT 0
 #define DOWN 1
@@ -19,10 +21,7 @@
 #define LATENCY_METHOD_NEW 3
 #define eps 1e-6
 
-
 long long count;
-const int direct_x[4] = {1, 0, -1, 0};
-const int direct_y[4] = {0, -1, 0, 1};
 
 inline double cost_func_manhattan(Pos pos_u, Pos pos_v, double weight){
     return weight * (abs(pos_u.x - pos_v.x) + abs(pos_u.y - pos_v.y));
@@ -148,10 +147,8 @@ void print_mapping(int * index, int size_x, int size_y){
 }
 
 Placement ForceDirected::do_mapping(Machine & machine, Network & network) {
-    printf("mapping start, algorithm: force directed\n");
-    RandomMapping randomMapping;
-    Placement placement = randomMapping.do_mapping(machine, network);
-    printf("mapping_done\n");
+    Hilbert hilbert;
+    Placement placement = hilbert.do_mapping(machine, network);
     return do_mapping(placement);
 }
 
@@ -349,7 +346,8 @@ Placement ForceDirected::do_mapping(Placement & init_placement, int method) {
     delete[] connect_pairs;
     printf("mapping_done count:%lld\n", count);
     auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    printf("duration: %f\n",double (duration.count())/std::chrono::milliseconds::period::den);
+    double duration = double((std::chrono::duration_cast<std::chrono::milliseconds>(end - start)).count())/std::chrono::milliseconds::period::den;
+    printf("duration: %f\n",duration);
+    placement.time_spent = duration;
     return placement;
 }

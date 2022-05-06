@@ -39,6 +39,8 @@ public:
     int core_num;
     Pos * mapping;
     int * index;
+    double time_spent{};
+
 
     inline int get_index(int code) const;
     inline int get_index(int x,int y) const;

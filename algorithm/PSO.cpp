@@ -133,6 +133,12 @@ Placement PSO::do_mapping(Machine & machine, Network & network) {
                 }
             }
         }
+
+        auto end = std::chrono::system_clock::now();
+        double duration = double((std::chrono::duration_cast<std::chrono::milliseconds>(end - start)).count())/std::chrono::milliseconds::period::den;
+        if (duration > 7200){
+            break;
+        }
     }
     //------------get output placement----------------------------
     auto placement = build_placement_from_particle(machine, network, gbest, true);
@@ -148,7 +154,12 @@ Placement PSO::do_mapping(Machine & machine, Network & network) {
     delete[] pbest;
 
     auto end = std::chrono::system_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    printf("duration: %f\n",double (duration.count())/std::chrono::milliseconds::period::den);
+    double duration = double((std::chrono::duration_cast<std::chrono::milliseconds>(end - start)).count())/std::chrono::milliseconds::period::den;
+    printf("duration: %f\n",duration);
+    placement.time_spent = duration;
     return placement;
+}
+
+PSO::PSO(){
+    name = "PSO";
 }

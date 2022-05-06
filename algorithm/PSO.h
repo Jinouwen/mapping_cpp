@@ -11,7 +11,7 @@
 class PSO :public PlacementAlgorithm{
 public:
     Placement do_mapping(Machine &, Network &) override;
-
+    PSO();
 };
 
 

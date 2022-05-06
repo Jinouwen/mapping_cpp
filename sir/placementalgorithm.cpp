@@ -5,3 +5,6 @@
 #include "placementalgorithm.h"
 
 
+PlacementAlgorithm::PlacementAlgorithm() {
+    name="undefined_mapping_algorithm";
+}

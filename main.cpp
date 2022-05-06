@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility>
 #include "sir/machine.h"
 #include "sir/network.h"
 #include "algorithm/randommapping.h"
@@ -23,7 +24,7 @@ void PSO_test(){
     PSO pso;
     Placement placement_random = random_mapping.do_mapping(machine, net);
     Placement placement_hilbert = hilbert.do_mapping(machine, net);
-    Placement placement_fd = ForceDirected::do_mapping(placement_hilbert);
+    Placement placement_fd = force_directed.do_mapping(placement_hilbert);
     Placement placement_pso = pso.do_mapping(machine, net);
     auto cost_random = Evaluator::weighted_length_total(placement_random);
     auto cost_fd = Evaluator::weighted_length_total(placement_fd);
@@ -41,7 +42,7 @@ void test2(){
     RandomMapping random_mapping;
     ForceDirected force_directed;
     Placement placement_hilbert = hilbert.do_mapping(machine, net);
-    Placement placement_fd = ForceDirected::do_mapping(placement_hilbert);
+    Placement placement_fd = force_directed.do_mapping(placement_hilbert);
     int a = 1;
 }
 
@@ -61,15 +62,16 @@ void test3_old(int _size = 0, int method = 0){
     ZigZag zig_zag;
     Circle circle;
     PSO pso;
+    ForceDirected force_directed;
 
     Placement placement_hilbert = hilbert.do_mapping(machine, net);
     Placement placement_random = random_mapping.do_mapping(machine, net);
     Placement placement_zigzag = zig_zag.do_mapping(machine, net);
     Placement placement_circle = circle.do_mapping(machine, net);
-    Placement placement_FD_hilbert_cost = ForceDirected::do_mapping(placement_hilbert, DEFAULT_METHOD);
-    Placement placement_FD_cost = ForceDirected::do_mapping(placement_random, DEFAULT_METHOD);
-    Placement placement_FD_longest = ForceDirected::do_mapping(placement_random, LATENCY_METHOD_NEW);
-    Placement placement_FD_hilbert_longest = ForceDirected::do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
+    Placement placement_FD_hilbert_cost = force_directed.do_mapping(placement_hilbert, DEFAULT_METHOD);
+    Placement placement_FD_cost = force_directed.do_mapping(placement_random, DEFAULT_METHOD);
+    Placement placement_FD_longest = force_directed.do_mapping(placement_random, LATENCY_METHOD_NEW);
+    Placement placement_FD_hilbert_longest = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
     Placement placement_pso = pso.do_mapping(machine, net);
 
     double cost_random, cost_zigzag, cost_circle, cost_hilbert, cost_FD_cost,
@@ -157,22 +159,63 @@ void test3_old(int _size = 0, int method = 0){
 
 
 }
-void test3(Machine machine, Network net){
+void major_test(Machine &machine, Network &net, std::string name,int opt = 0){
+    /* opt
+     * 1: dont run PSO
+     */
+    std::cerr << std::endl << std::endl << std::endl;
+    Hilbert hilbert;
+    RandomMapping random_mapping;
+    ZigZag zig_zag;
+    Circle circle;
+    PSO pso;
+    ForceDirected force_directed;
+    Evaluator evaluator(name);
+
+    std::cerr << "mapping: " <<name<< std::endl;
+
+    Placement placement_hilbert = hilbert.do_mapping(machine, net);
+    Placement placement_random = random_mapping.do_mapping(machine, net);
+    Placement placement_zigzag = zig_zag.do_mapping(machine, net);
+    Placement placement_circle = circle.do_mapping(machine, net);
+    Placement placement_FD_hilbert_cost = force_directed.do_mapping(placement_hilbert, DEFAULT_METHOD);
+    Placement placement_FD_cost = force_directed.do_mapping(placement_random, DEFAULT_METHOD);
+    Placement placement_FD_longest = force_directed.do_mapping(placement_random, LATENCY_METHOD_NEW);
+    Placement placement_FD_hilbert_longest = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
+
+    evaluator.add_task(placement_hilbert, "Hilbert");
+    evaluator.add_task(placement_random, "Random mapping");
+    evaluator.add_task(placement_zigzag, "Zig-zag");
+    evaluator.add_task(placement_circle, "Circle");
+    evaluator.add_task(placement_FD_hilbert_cost, "Hilbert_FD_default");
+    evaluator.add_task(placement_FD_cost, "FD_default");
+    evaluator.add_task(placement_FD_longest, "FD_latency");
+    evaluator.add_task(placement_FD_hilbert_longest, "Hilbert_FD_latency");
+    if (! (opt&1)){
+        Placement placement_pso = pso.do_mapping(machine, net);
+        evaluator.add_task(placement_pso, "PSO");
+    }
+
+    evaluator.evaluate();
+
+}
+void test3_old2(Machine &machine, Network &net){
     std::cout << std::endl << std::endl << std::endl;
     Hilbert hilbert;
     RandomMapping random_mapping;
     ZigZag zig_zag;
     Circle circle;
     PSO pso;
+    ForceDirected force_directed;
 
     Placement placement_hilbert = hilbert.do_mapping(machine, net);
     Placement placement_random = random_mapping.do_mapping(machine, net);
     Placement placement_zigzag = zig_zag.do_mapping(machine, net);
     Placement placement_circle = circle.do_mapping(machine, net);
-    Placement placement_FD_hilbert_cost = ForceDirected::do_mapping(placement_hilbert, DEFAULT_METHOD);
-    Placement placement_FD_cost = ForceDirected::do_mapping(placement_random, DEFAULT_METHOD);
-    Placement placement_FD_longest = ForceDirected::do_mapping(placement_random, LATENCY_METHOD_NEW);
-    Placement placement_FD_hilbert_longest = ForceDirected::do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
+    Placement placement_FD_hilbert_cost = force_directed.do_mapping(placement_hilbert, DEFAULT_METHOD);
+    Placement placement_FD_cost = force_directed.do_mapping(placement_random, DEFAULT_METHOD);
+    Placement placement_FD_longest = force_directed.do_mapping(placement_random, LATENCY_METHOD_NEW);
+    Placement placement_FD_hilbert_longest = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
     Placement placement_pso = pso.do_mapping(machine, net);
 
     double cost_random, cost_zigzag, cost_circle, cost_hilbert, cost_FD_cost,
@@ -293,10 +336,12 @@ void test5(){
     printf("layer num: %d, node per layer: %d\n",layer_num, node_per_layer);
     RandomMapping random_mapping;
     Hilbert hilbert;
+    ForceDirected force_directed;
+
     auto placement_random = random_mapping.do_mapping(machine, net);
     auto placement_hilbert = hilbert.do_mapping(machine, net);
-    auto placement_FD_cost = ForceDirected::do_mapping(placement_hilbert, DEFAULT_METHOD_NEW);
-    auto placement_FD_latency = ForceDirected::do_mapping(placement_hilbert, LATENCY_METHOD);
+    auto placement_FD_cost = force_directed.do_mapping(placement_hilbert, DEFAULT_METHOD_NEW);
+    auto placement_FD_latency = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD);
 
     auto cost_hilbert = Evaluator::weighted_length_total(placement_hilbert);
     auto cost_random = Evaluator::weighted_length_total(placement_random);
@@ -339,10 +384,11 @@ void test6(){
     printf("layer num: %d, node per layer: %d\n",layer_num, node_per_layer);
     RandomMapping random_mapping;
     Hilbert hilbert;
+    ForceDirected force_directed;
     auto placement_random = random_mapping.do_mapping(machine, net);
     auto placement_hilbert = hilbert.do_mapping(machine, net);
-    auto placement_FD_cost = ForceDirected::do_mapping(placement_hilbert, DEFAULT_METHOD_NEW);
-    auto placement_FD_latency = ForceDirected::do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
+    auto placement_FD_cost = force_directed.do_mapping(placement_hilbert, DEFAULT_METHOD_NEW);
+    auto placement_FD_latency = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
 
     auto cost_hilbert = Evaluator::weighted_length_total(placement_hilbert);
     auto cost_random = Evaluator::weighted_length_total(placement_random);
@@ -378,9 +424,25 @@ void code_test(){
 void inceptionV3(){
     auto machine = Machine(60);
     auto net = Network::load_from_files("/tmp/pycharm_project_498/snntoolbox_applications/models/inceptionV3");
-    test3(machine, net);
+    test3_old2(machine, net);
+}
+
+void test_evaluator(){
+    Machine machine(4);
+    Network net = Network::make_random_conv_net(4,4,4);
+    major_test(machine,net,"test");
+}
+void full_connection(){
+    int test_list[3] = {256,512,1024};
+    for(int i : test_list){
+        Machine machine(i);
+        auto network = Network::make_random_net(i,i,0);
+        major_test(machine,network,"DNN_"+std::to_string(i)+"_"+ std::to_string(i),1);
+    }
+
 }
 int main() {
-    inceptionV3();
+
+    full_connection();
     return 0;
 }

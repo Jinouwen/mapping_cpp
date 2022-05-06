@@ -7,7 +7,7 @@
 Placement::Placement(Machine & machine1, Network & network1):machine(machine1),network(network1),core_num(machine1.core_num){
     mapping = new Pos[core_num];
     index = new int[core_num];
-
+    time_spent = -1;
 }
 
 Placement::~Placement() {
