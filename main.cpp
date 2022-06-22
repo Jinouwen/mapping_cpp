@@ -9,6 +9,7 @@
 #include "algorithm/hilbert.h"
 #include "algorithm/force_directed.h"
 #include "algorithm/PSO.h"
+#include "visualize.h"
 
 #define DEFAULT_METHOD 0
 #define LATENCY_METHOD 1
@@ -180,8 +181,11 @@ void major_test(Machine &machine, Network &net, std::string name,int opt = 0){
     Placement placement_circle = circle.do_mapping(machine, net);
     Placement placement_FD_hilbert_cost = force_directed.do_mapping(placement_hilbert, DEFAULT_METHOD);
     Placement placement_FD_cost = force_directed.do_mapping(placement_random, DEFAULT_METHOD);
-    Placement placement_FD_longest = force_directed.do_mapping(placement_random, LATENCY_METHOD_NEW);
-    Placement placement_FD_hilbert_longest = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
+    Placement placement_FD_L2_2 = force_directed.do_mapping(placement_random, LATENCY_METHOD_NEW);
+    Placement placement_FD_hilbert_L2_2 = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
+    Placement placement_FD_L1_2 = force_directed.do_mapping(placement_random, LATENCY_METHOD);
+    Placement placement_FD_hilbert_L1_2 = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD);
+    Placement placement_pso = pso.do_mapping(machine, net);
 
     evaluator.add_task(placement_hilbert, "Hilbert");
     evaluator.add_task(placement_random, "Random mapping");
@@ -189,12 +193,55 @@ void major_test(Machine &machine, Network &net, std::string name,int opt = 0){
     evaluator.add_task(placement_circle, "Circle");
     evaluator.add_task(placement_FD_hilbert_cost, "Hilbert_FD_default");
     evaluator.add_task(placement_FD_cost, "FD_default");
-    evaluator.add_task(placement_FD_longest, "FD_latency");
-    evaluator.add_task(placement_FD_hilbert_longest, "Hilbert_FD_latency");
-    if (! (opt&1)){
-        Placement placement_pso = pso.do_mapping(machine, net);
-        evaluator.add_task(placement_pso, "PSO");
-    }
+    evaluator.add_task(placement_FD_L2_2, "FD_L2_2");
+    evaluator.add_task(placement_FD_hilbert_L2_2, "Hilbert_FD_L2_2");
+    evaluator.add_task(placement_FD_L1_2, "FD_L1_2");
+    evaluator.add_task(placement_FD_hilbert_L1_2, "Hilbert_FD_L1_2");
+    evaluator.add_task(placement_pso, "PSO");
+
+
+    evaluator.evaluate();
+
+}
+
+
+void major_test_without_PSO(Machine &machine, Network &net, std::string name,int opt = 0){
+    /* opt
+     * 1: dont run PSO
+     */
+    std::cerr << std::endl << std::endl << std::endl;
+    Hilbert hilbert;
+    RandomMapping random_mapping;
+    ZigZag zig_zag;
+    Circle circle;
+    PSO pso;
+    ForceDirected force_directed;
+    Evaluator evaluator(name);
+
+    std::cerr << "mapping: " <<name<< std::endl;
+
+    Placement placement_hilbert = hilbert.do_mapping(machine, net);
+    Placement placement_random = random_mapping.do_mapping(machine, net);
+    Placement placement_zigzag = zig_zag.do_mapping(machine, net);
+    Placement placement_circle = circle.do_mapping(machine, net);
+    Placement placement_FD_hilbert_cost = force_directed.do_mapping(placement_hilbert, DEFAULT_METHOD);
+    Placement placement_FD_cost = force_directed.do_mapping(placement_random, DEFAULT_METHOD);
+    Placement placement_FD_L2_2 = force_directed.do_mapping(placement_random, LATENCY_METHOD_NEW);
+    Placement placement_FD_hilbert_L2_2 = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD_NEW);
+    Placement placement_FD_L1_2 = force_directed.do_mapping(placement_random, LATENCY_METHOD);
+    Placement placement_FD_hilbert_L1_2 = force_directed.do_mapping(placement_hilbert, LATENCY_METHOD);
+
+    evaluator.add_task(placement_hilbert, "Hilbert");
+    evaluator.add_task(placement_random, "Random mapping");
+    evaluator.add_task(placement_zigzag, "Zig-zag");
+    evaluator.add_task(placement_circle, "Circle");
+    evaluator.add_task(placement_FD_hilbert_cost, "Hilbert_FD_default");
+    evaluator.add_task(placement_FD_cost, "FD_default");
+    evaluator.add_task(placement_FD_L2_2, "FD_L2_2");
+    evaluator.add_task(placement_FD_hilbert_L2_2, "Hilbert_FD_L2_2");
+    evaluator.add_task(placement_FD_L1_2, "FD_L1_2");
+    evaluator.add_task(placement_FD_hilbert_L1_2, "Hilbert_FD_L1_2");
+
 
     evaluator.evaluate();
 
@@ -433,7 +480,7 @@ void test_evaluator(){
     major_test(machine,net,"test");
 }
 void full_connection(){
-    int test_list[3] = {256,512,1024};
+    int test_list[8] = {4,16,32,64,128,256,512,1024};
     for(int i : test_list){
         Machine machine(i);
         auto network = Network::make_random_net(i,i,0);
@@ -441,8 +488,47 @@ void full_connection(){
     }
 
 }
-int main() {
+void spare_full_connection(){
 
-    full_connection();
+    int test_list[2] = {512,1024};
+    for(int i : test_list){
+        Machine machine(i);
+        auto network = Network::make_random_net(i*i/64,64,0);
+        major_test_without_PSO(machine,network,"DNN_"+std::to_string(i*i/64)+"_"+ std::to_string(64));
+
+    }
+}
+
+void CNN_major_test(){
+    int test_list[2] = {512,1024};
+    for(int i : test_list){
+        Machine machine(i);
+        int layer_num = i;
+        int num_per_layer = i;
+        int kernal_size = 4; //default 9
+        auto network = Network::make_random_conv_net(i,i,kernal_size);
+        major_test_without_PSO(machine,network,"CNN_small_kernal_"+std::to_string(layer_num)+"_"+ std::to_string(num_per_layer));
+    }
+}
+int main(int argc, char** argv) {
+    if(argc < 2){
+        std::cerr<< "CNN" << std::endl;
+        CNN_major_test();
+    }
+    else{
+        if(std::string(argv[1]) == std::string ("-f")){
+            // maping -f config_filename text
+            auto net = Network::load_from_files(argv[2]);
+            int machine_size = ((int)sqrt((double)net.node_num));
+            std::cerr << "node_num:" << net.node_num << std::endl;
+            std:std::cerr << "machine_size: " << machine_size << std::endl;
+            auto machine = Machine(machine_size);
+            major_test(machine,net,argv[3]);
+        }
+        if(std::string(argv[1]) == std::string ("CNN")){
+            std::cerr<< "CNN" << std::endl;
+            CNN_major_test();
+        }
+    }
     return 0;
 }

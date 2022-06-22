@@ -28,7 +28,7 @@ public:
     static double longest_path(const Placement &placement);
     double get_energy_consumption(const Placement &placement) const;
     std::pair<double, double > get_latency(const Placement & placement) const;
-    static std::pair<double, double> congestion(const Placement &placement);
+    static std::pair<double, double> congestion(Placement &placement);
 
 
     explicit Evaluator(std::string name);

@@ -6,7 +6,6 @@
 #include <iostream>
 #include <chrono>
 
-
 inline static Placement build_placement_from_particle(Machine & machine, Network & network,const int * encode_particle, bool if_build_index=false){
     int dimension = machine.core_num;
     bool used[dimension];
@@ -58,7 +57,7 @@ Placement PSO::do_mapping(Machine & machine, Network & network) {
     double W = 0.9;
     double C1 = 2;
     double C2 = 2;
-    int particle_num = network.node_num * 2;
+    int particle_num = std::min(network.node_num * 2, 3600);
     int iteration_num = std::min(network.node_num * 2, 3600);
     int dimension = machine.core_num;
     printf("particle num:%d dimension:%d\n", particle_num, dimension);
@@ -136,7 +135,7 @@ Placement PSO::do_mapping(Machine & machine, Network & network) {
 
         auto end = std::chrono::system_clock::now();
         double duration = double((std::chrono::duration_cast<std::chrono::milliseconds>(end - start)).count())/std::chrono::milliseconds::period::den;
-        if (duration > 7200){
+        if (duration > 3600){
             break;
         }
     }

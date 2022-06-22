@@ -8,7 +8,7 @@
 #include "cmath"
 #include <cstdio>
 #include <iostream>
-
+#include "visualize.h"
 Evaluator::Evaluator(std::string name):
         name(std::move(name)){
     EN_r = 1;
@@ -99,7 +99,7 @@ double Evaluator::longest_path(const Placement &placement) {
 }
 
 
-std::pair<double,double> Evaluator::congestion(const Placement &placement) {
+std::pair<double,double> Evaluator::congestion(Placement &placement) {
     #define get_right(x,y) ((x)*size_y+(y)+size_total)
     #define get_up(x,y) ((x)*(size_y-1)+(y))
     auto & machine = placement.machine;
@@ -111,6 +111,7 @@ std::pair<double,double> Evaluator::congestion(const Placement &placement) {
     int size_y = machine.size_y;
     int size_x = machine.size_x;
     int size_total = (size_y - 1) * size_x;
+
     for (int i = 0; i < node_num; ++i){
         for (auto j: edges[i]){
             if (j.is_reverse) continue;
@@ -158,6 +159,7 @@ void Evaluator::evaluate() {
     FILE *fp=freopen(filename.c_str(),"w", stdout);
 
     for (auto & task : task_list){
+        std::cerr << task.name << std::endl;
         name = task.name;
         Placement & placement = task.placement;
         energy_consumption = get_energy_consumption(placement);
@@ -175,7 +177,6 @@ void Evaluator::evaluate() {
     fflush(fp);
     fclose(fp);
     freopen("/dev/tty","w",stdout);
-    printf("test\n");
     std::cerr<<"evaluate done. Result saved in ./" << filename << std::endl;
 }
 

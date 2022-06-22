@@ -116,7 +116,7 @@ void Hilbert::dfs(int &now_index, Pos now_pos, Pos start_pos, Pos end_pos, int s
             y1_flag = std::abs(mid_y1 - y1 + 1) % 2;
         }
         int len_x0 = std::abs(mid_x0 - x0) + 1;
-        int len_y0 = std::abs(mid_x0 - x0) + 1;
+        int len_y0 = std::abs(mid_y0 - y0) + 1;
         int len_x1 = std::abs(x1 - mid_x1) + 1;
         int len_y1 = std::abs(y1 - mid_y1) + 1;
         if (start_pos.x == end_pos.x){
